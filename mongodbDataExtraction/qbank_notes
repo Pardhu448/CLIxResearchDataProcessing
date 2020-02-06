@@ -1,0 +1,11 @@
+# Status so far:
+- We could use MIT scripts to extract assessment data from complete school DBs
+- Note that this extraction is not possible from qban.tar.gz file of syncthing
+- This is due to a technical glitch which syncing qbank data into syncthing
+- We have rectified this error and updated these minor changes in patch6 
+- Now the only way forward to get assessment data is to explore complete school dump from field
+- We have recieved some HDDs in recent months from field and in the process of collating it
+- Once we have them all collated, we will just have to run already existing scripts to extract assessment data
+- This needs a proper collation of data from field as data is copied without any documentation from schools
+- Need to look into this code by sheethal for more details of extracting data - https://github.com/gnowledge/gstudio/blob/1c18ba3369220ba6070bd6fb38778b46a9e81e10/gnowsys-ndf/gnowsys_ndf/ndf/views/gcourse.py
+
