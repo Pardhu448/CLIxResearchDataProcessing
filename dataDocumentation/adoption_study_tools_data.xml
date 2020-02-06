@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="codebook2-0.xsl" type="text/xsl" ?>
+<!DOCTYPE codeBook SYSTEM "http://www.icpsr.umich.edu/DDI/Version2-1.dtd">
+<codeBook> 
+  <docDscr source="archive"> 
+	 <citation source="archive"> 
+		<titlStmt source="archive"> 
+		  <titl source="archive">Platform Adoption Study: Tools data File</titl>
+		  <IDNo agency="TISS" source="archive">2825</IDNo>
+		</titlStmt> 
+		<rspStmt source="archive"> 
+		  <AuthEnty source="archive">Reasearch Team, Clix Project, TISS</AuthEnty>
+		</rspStmt> 
+		<prodStmt source="archive"> 
+		  <producer abbr="TISS" affiliation="Tata Institute of Social Sciences" source="archive">Clix, Tata Institute of Social Sciences</producer>
+		  <copyright source="archive">GPL License</copyright>
+		  <prodDate date="2019-01-29" source="archive">January 29, 2019</prodDate>
+		  <prodPlac source="archive">Mumbai: Maharashtra : India</prodPlac>
+		  <software version="1.0" date="2019-2020" source="archive">VIM Editor</software>
+		  <fundAg abbr="TT" source="archive"> Tata Trust</fundAg>
+		  <grantNo source="archive">TT-9617813</grantNo> 
+		</prodStmt> 
+		<distStmt source="archive"> 
+		  <distrbtr abbr="TISS" affiliation="Tata Institute of Social Sciences" URI="http://www.tiss.edu/" source="archive">Clix, Tata Institute of Social Sciences</distrbtr>
+		  <distDate date="2019-01-29" source="archive">January 29, 2019</distDate>
+		</distStmt> 
+		<verStmt source="archive"> 
+		  <version type="version" date="2019" source="archive">1</version>
+		  <verResp affiliation="TISS">Parthasarathi Edupally</verResp>
+		</verStmt> 
+		 
+	 </citation> 
+	 <docSrc source="archive"> 
+		<titlStmt source="archive"> 
+		  <titl>Platform Adoption Study: Tools data File</titl>
+		  <IDNo agency="TISS" source="archive">2825</IDNo> 
+		</titlStmt> 
+		<rspStmt source="archive"> 
+		  <AuthEnty source="archive">Research Team, Clix, TISS</AuthEnty>
+		</rspStmt> 
+		<prodStmt source="archive"> 
+		  <producer> Clix, Tata Institute of Social Sciences</producer>
+		  <prodDate date="2019" source="archive">2019</prodDate>
+		  <prodPlac source="archive">Mumbai : Maharashtra : india </prodPlac>
+		</prodStmt> 
+		<distStmt source="archive"> 
+		  <distrbtr abbr="TISS" affiliation="Tata Institute of Social Sciences" URI="http://www.tiss.edu/" source="archive">Clix, Tata Institute of Social Sciences, Mumbai</distrbtr>
+		  <distDate date="2019-20" source="archive">January 2019</distDate>
+		</distStmt> 
+		<verStmt source="archive"> 
+		  <version source="archive">First release</version>
+		</verStmt> 
+		<biblCit source="archive">Clix, Tata Institute of Social Sciences.
+		  Platform Adoption Study: Tools data File[computer file].
+		  Mumbai, Maharashtra: Clix, Tata Institute of Social Sciences [producer], 2019.
+		  Mumbai, Maharashtra : Tata Institute of Social Sciences[distributor], 2019.</biblCit>
+	 </docSrc> 
+  </docDscr> 
+  <stdyDscr> 
+	 <citation> 
+		<titlStmt> 
+		  <titl>Platform Adoption Study: Tools data File</titl>
+		</titlStmt> 
+		<rspStmt> 
+		  <AuthEnty>Research Team, Clix, Tata Institute of Social Sciences</AuthEnty>
+		</rspStmt> 
+		<prodStmt> 
+		  <producer>Clix, Tata Institute of Social Sciences</producer>
+		  <prodDate date="2019">2019</prodDate>
+		  <prodPlac>Mumbai, Maharashtra: Clix, Tata Institute of Social Sciences</prodPlac>
+		</prodStmt> 
+		<distStmt> 
+		  <distrbtr URI="https://clix.tiss.edu/">Clix, Tata Institute of Social Sciences.</distrbtr>
+		  <distDate date="2019">2019</distDate>
+		</distStmt> 
+		<verStmt> 
+		  <version date="2019">First release</version>
+		</verStmt> 
+		<biblCit> Clix, Tata Institute of Social Sciences.
+		  Platform Adoption Study: Tools data File[computer file].
+		  Mumbai, Maharashtra: Clix, Tata Institute of Social Sciences [producer], 2019.
+		  Mumbai, Maharashtra : Tata Institute of Social Sciences[distributor], 2019.</biblCit>
+	 </citation> 
+	 <stdyInfo> 
+		<abstract date="2019"> Platform adoption study is part of research agenda of Clix
+			research team to understand adoption of ICT (Information and Communication Technology)
+			at student level. This is to some extent quantified by the time spent by each student
+			on a given tool in a given school.
+
+	        </abstract>
+		<sumDscr> 
+		   
+		  <timePrd date="2018-01" event="start">January 2018</timePrd>
+		  <timePrd date="2018-12" event="end">December 2018</timePrd>
+		  <collDate date="2019-29">January 2019</collDate>
+		  <nation abbr="IND">India</nation>
+		  <geogCover> Chhattisgarh</geogCover>
+		  <anlyUnit> Student</anlyUnit>
+		  <universe> The students using Clix platform in implemented schools</universe>
+		  <dataKind>Cross-section data</dataKind>
+		</sumDscr> 
+	 </stdyInfo> 
+	 <method> 
+		<dataColl> 
+		  <timeMeth>cross-section</timeMeth> 
+		  <dataCollector>Clix, Tata Institute of Social Sciences</dataCollector>
+		  <sampProc> Schools in which students are accessing tools are selected based on different parameters like possible impact on the school etc.</sampProc> 
+		  <collMode>These are digital exhaust of students using clix platform</collMode> 
+		</dataColl> 
+	 </method> 
+	 <dataAccs> 
+		<setAvail media="online"> 
+		  <accsPlac URI="https://clix.tiss.edu/">Clix, Tata Institute of Social Sciences</accsPlac> 
+		  <collSize source="producer">1 data file (csv) + 1 machine-readable
+			 documentation (XML) + 1 stylesheet (XSL)</collSize> 
+		  <fileQnty>3</fileQnty> 
+		</setAvail> 
+	 </dataAccs> 
+  </stdyDscr> 
+  <fileDscr> 
+	 <fileTxt> 
+		<fileName>Platform Adoption Study - Tools data File </fileName> 
+		<fileCont>This data file contains student logs of tools section of the clix platform. Each row corresponds to unique log of student interaction with tools section of the platform. </fileCont> 	
+</fileTxt>	
+  </fileDscr> 
+  
+  
+  <dataDscr>
+	 
+	 
+	 <varGrp ID="VG1" var="school_server_code tool_name user_id">
+		
+		<labl level="VAR GROUP">Group describing the unit of study</labl> 
+	 </varGrp> 
+	 	 
+	 <varGrp ID="VGa" var="created_at domain date_created time_spent"> 
+		<labl level="VAR GROUP">Group corresponding to measurement of unit of study</labl> 
+	 </varGrp> 
+	
+	 
+	 <var ID="school_server_code" name="school_server_code" rectype="STUDENT"> 
+		<txt level="VAR">School Server Code </txt> 
+		<catgry missing="N"> 
+		  <catValu>0</catValu> 
+		  <labl level="CAT">No school_server_code or Not Identified </labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu>0000000-aa to 9999999-zz</catValu> 
+		  <labl level="CAT"> school_server_code </labl> 
+		</catgry> 
+	 </var>
+	 <var ID="tool_name" name="tool_name" rectype="STUDENT"> 
+		<txt level="VAR">Tool Name</txt> 
+		<catgry missing="N"> 
+		  <catValu>0</catValu> 
+		  <labl level="CAT">NOT tool_name OR NOT IDENTIFIED</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu> String value</catValu> 
+		  <labl level="CAT">tool_name</labl> 
+		</catgry> 
+	 </var> 
+         <var ID="user_id" name="user_id" rectype="STUDENT"> 
+		<txt level="VAR">Student User ID</txt> 
+		<catgry missing="N"> 
+		  <catValu>0</catValu> 
+		  <labl level="CAT">NOT Logged-in Student </labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu> Integer value</catValu> 
+		  <labl level="CAT">user_id of logged student</labl> 
+		</catgry> 
+	</var> 
+
+	<var ID="created_at" name="created_at" rectype="STUDENT"> 
+		<txt level="VAR">Student Log Created Time Stamp</txt> 
+		<catgry missing="N"> 
+		  <catValu>9999</catValu> 
+		  <labl level="CAT">No Time Stamp Available for record</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu> Python Time Stamp Format in String</catValu> 
+		  <labl level="CAT">TimeStamp of creation of record</labl> 
+		</catgry> 
+	</var> 
+
+
+
+	 <var ID="domain" name="domain" rectype="STUDENT"> 
+		<universe>All students using the platform</universe> 
+		<txt level="VAR">Domain the Tool can be categorized into</txt> 
+		<catgry missing="N"> 
+		  <catValu>0</catValu> 
+		  <labl level="CAT">Not an identified domain</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu>m</catValu> 
+		  <labl level="CAT">MATHEMATICS</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu>s</catValu> 
+		  <labl level="CAT">SCIENCE</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu>e</catValu> 
+		  <labl level="CAT">ENGLISH</labl> 
+		</catgry> 
+
+	</var> 
+
+	<var ID="date_created" name="date_created" rectype="STUDENT"> 
+		<txt level="VAR">Date of Log of Student Interaction</txt> 
+		<catgry missing="N"> 
+		  <catValu>9999</catValu> 
+		  <labl level="CAT">No Date Available for record</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu> Python date Format in String</catValu> 
+		  <labl level="CAT">Date of creation of record</labl> 
+		</catgry> 
+	</var> 
+
+	<var ID="time_spent" name="time_spent" rectype="STUDENT"> 
+		<txt level="VAR">Time spent on a Tool in minutes by a student on a particular day </txt> 
+		<catgry missing="N"> 
+		  <catValu>9999</catValu> 
+		  <labl level="CAT">No Date Available for record</labl> 
+		</catgry> 
+		<catgry> 
+		  <catValu> Integer</catValu> 
+		  <labl level="CAT">Time Spent in Minutes</labl> 
+		</catgry> 
+	</var> 
+
+	 
+  </dataDscr> 
+</codeBook>
