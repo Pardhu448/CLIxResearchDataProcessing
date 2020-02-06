@@ -1,0 +1,43 @@
+# Some important points:
+0. Premise:
+   - We want to consider class/section in a school as basic unit of study
+   - As it is hard to track a student over time (given students dont always use same login id)
+   - Teachers drive the engagement of a class with clix modules 
+   - It depends on module's relevance for the topics they are teaching currently, teacher's motivation and other module/school specific features
+   - Lools like clix labs are conducted for one or two days in any week, so we are counting time of engagement in weeks.
+   - There are long gaps between rollout of same module in many schools (we are not counting those gaps into time of engagement)
+
+1. Questions of interest:
+   - Which modules/subjects(collection of modules of particular subject) were rolled out consistently over time
+   - In other words, with which modules/subjects a classroom engaged consistently (over the period during which they were offered)
+   - Can it be explained by school specific features, module specific features or teacher specific features
+
+2. Some details:
+   - We want to measure persistence of a module engagement from the time it starts to the time rollout is stopped
+   - This can be measured using survival times of module engagement
+   - Survival times can be a good measure of persistence as it accounts for the fact that event didnt happen till the end (and thus
+     persisted till the end)  
+   - Time to event is the time in weeks from start till the rollout of module is stopped (we dont count gaps in between)
+   - It is simply number of weeks class engaged with module/tool 
+   - Here we are looking at the behaviour of school teacher in terms of his interest in rolling out a particular module 
+     to his class, as it is mostly driven by teachers 
+   - Probably, modules which are bigger by design tend to be having longer time to event in general
+   - But we need to establish this fact first through survival analysis 
+   - If in fact the time to event for modules with more lessons is higher, then need to establish this by investigating if the number of lessons is 
+     significant in determining time to event using cox-proportional hazard model positing on other factors.
+   - If it is otherwise, then we can conclude that there are other factors like teachers interest, ease of assimilation into syllbus etc 
+     which might be causing higher time to event for these modules. 
+   - We can also see how this time to event changes with district, state and student/teacher ratio etc for a given module or tool 
+   - Some factors which can affect this persistent engagement - domain, lessonscompleted, state, district, timespent, server on days, district, month, total students, total lab days
+
+# Further Research
+1. What external factors determine student engagement with different modules and tools - locality, teacher student ratio, IMT etc
+2. Has the engagement increased over the period of execution of the project - may be due to some innovations in implementation at specific point during observation period
+3. We could look at engagement in a particular tool (say policesquad) and determine what specific features of the game affect the engagement of students with the tool  
+
+### Notes after doing some analysis as of 17th Nov, 2019:
+ - We have math domain modules doing better than science statistically significantly 
+ - Also schools whose teachers took tpd are doing better than those who didnt (assuming we have all teachers who took tpd in endline survey)
+ - May be we want to do dummy variable CPH model fitting with mixed dummy variables to check the effect of math+tpd on math+no_tpd etc
+
+
