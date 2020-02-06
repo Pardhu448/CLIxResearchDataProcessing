@@ -1,0 +1,29 @@
+.axis path,
+    .axis line {
+      fill: none;
+      font: 10px sans-serif;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .legend {
+        padding: 5px;
+        font: 10px sans-serif;
+        background: yellow;
+        box-shadow: 2px 2px 1px #888;
+    }
+
+    .tooltip {
+        background: #eee;
+        box-shadow: 0 0 5px #999999;
+        color: #333;
+        font-size: 12px;
+        left: 130px;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        top: 95px;
+        z-index: 10;
+        display: block;
+        opacity: 0;
+    }

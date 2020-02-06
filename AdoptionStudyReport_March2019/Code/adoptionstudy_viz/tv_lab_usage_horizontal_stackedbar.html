@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<style>
+
+.axis .domain {
+  display: none;
+}
+
+</style>
+<svg width="960" height="960"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 600, bottom: 150, left: 80},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + (margin.left + 600) + "," + margin.top + ")");
+    g1 = svg.append("g").attr("transform", "translate(" + (margin.left + 300) + "," + margin.top + ")");
+    g2 = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var y = d3.scaleBand()			// x = d3.scaleBand()
+    .rangeRound([0, height/1.5])	// .rangeRound([0, width])
+    .paddingInner(0.05)
+    .align(0.1);
+
+var x = d3.scaleLinear()		// y = d3.scaleLinear()
+    .rangeRound([0, width]);	// .rangeRound([height, 0]);
+
+var z = d3.scaleOrdinal()
+    .range(["#DC143C", "#DEB887", "#8FBC8F", "#ADD8E6", "#FF4500"]);
+
+svg.append("text")
+        .attr("x", width)
+        .attr("y", 10)
+        .attr("dy", "0.32em")										//     .attr("dy", "0.32em")
+        .attr("fill", "#000")
+        .attr("font-weight", "bold")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 13)
+        .text("Time Variation of Lab Usage in Mizoram*")
+
+svg.append("text")
+        .attr("x", width - 200)
+        .attr("y", 590)
+        .attr("dy", "0.32em")
+        .attr("font-weight", "bold")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .text("*Some of the Math tools and all English tools are not included")
+
+d3.csv("data/mizoram_Nov-Dec-2018_lab_func.csv", function(d, i, columns) {
+  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+  d.total = t;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  var keys = data.columns.slice(1);
+
+  //data.sort(function(a, b) { return b.total - a.total; });
+  y.domain(data.map(function(d) { return d.school_server_code; }));
+
+  //x.domain([0, 8]).nice();	// y.domain...
+
+  var x1 = d3.scaleLinear()
+             .rangeRound([0, width]);
+
+  //x.domain([0, d3.max(data, function(d) { return d.total;}) + 7]).nice();	// y.domain...
+  x.domain([0, 15]).nice()
+  z.domain(keys);
+
+  console.log(d3.max(data, function(d){return d.total;}))
+  g.append("g")
+    .selectAll("g")
+    .data(d3.stack().keys(keys)(data))
+    .enter().append("g")
+      .attr("fill", function(d) { return z(d.key); })
+    .selectAll("rect")
+    .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("y", function(d) { return y(d.data.school_server_code); })	    //.attr("x", function(d) { return x(d.data.State); })
+      .attr("x", function(d) { return x(d[0]); })			    //.attr("y", function(d) { return y(d[1]); })
+      .attr("width", function(d) { return x(d[1]) - x(d[0]); })	//.attr("height", function(d) { return y(d[0]) - y(d[1]); })
+      .attr("height", y.bandwidth()/1);						    //.attr("width", x.bandwidth());
+
+  g.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0,0)"); 						//  .attr("transform", "translate(0," + height + ")")
+     //.call(d3.axisLeft(y));									//   .call(d3.axisBottom(x));
+
+  g.append("g")
+      .attr("class", "axis")
+	  .attr("transform", "translate(0,"+(height/1.5 + 12)+")")				// New line
+      .call(d3.axisBottom(x).ticks(null, "s"))					//  .call(d3.axisLeft(y).ticks(null, "s"))
+    .append("text")
+      .attr("y", 2)												//     .attr("y", 2)
+      .attr("x", x(x.ticks().pop()) + 0.5) 						//     .attr("y", y(y.ticks().pop()) + 0.5)
+      .attr("dy", "0.32em")										//     .attr("dy", "0.32em")
+      .attr("fill", "#000")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "start")
+      .text("Number of Days (Nov-Dec, 2018)")
+	  .attr("transform", "translate("+ (-width) +",-10)");   	// Newline
+
+   g.selectAll("line.verticalGrid").data(x.ticks(1)).enter()
+    .append("line")
+        .attr(
+        {
+            "class":"verticalGrid",
+            "y1" : 300,
+            "y2" : 450,
+            "x1" : function(d){ return x(d);},
+            "x2" : function(d){ return x(d);},
+            "fill" : "none",
+            "shape-rendering" : "crispEdges",
+            "stroke" : "black",
+            "stroke-width" : "1px"
+        });
+
+  var legend = g.append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 10)
+      .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(keys.slice().reverse())
+    .enter().append("g")
+    //.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+	 .attr("transform", function(d, i) { return "translate(-50," + (300 + i * 20) + ")"; });
+
+ legend.append("rect")
+      .attr("x", width - 15)
+      .attr("y", -110)
+      .attr("width", 19)
+      .attr("height", 19)
+      .attr("fill", z);
+
+  legend.append("text")
+      .attr("x", width - 19)
+      .attr("y", -100)
+      .attr("dy", "0.32em")
+      .text(function(d) { return d; });
+});
+
+d3.csv("data/mizoram_Sep-Oct-2018_lab_func.csv", function(d, i, columns) {
+  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+  d.total = t;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  var keys = data.columns.slice(1);
+
+  //data.sort(function(a, b) { return b.total - a.total; });
+  y.domain(data.map(function(d) { return d.school_server_code; }));					// x.domain...
+  //x.domain([0, d3.max(data, function(d){return d.total;}) + 7]).nice();	// y.domain...
+  z.domain(keys);
+  x.domain([0, 15]).nice()
+  console.log(d3.max(data, function(d){return d.total;}))
+  g1.append("g")
+    .selectAll("g")
+    .data(d3.stack().keys(keys)(data))
+    .enter().append("g")
+      .attr("fill", function(d) { return z(d.key); })
+    .selectAll("rect")
+    .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("y", function(d) { return y(d.data.school_server_code); })	    //.attr("x", function(d) { return x(d.data.State); })
+      .attr("x", function(d) { return x(d[0]); })			    //.attr("y", function(d) { return y(d[1]); })
+      .attr("width", function(d) { return x(d[1]) - x(d[0]); })	//.attr("height", function(d) { return y(d[0]) - y(d[1]); })
+      .attr("height", y.bandwidth()/1);						    //.attr("width", x.bandwidth());
+
+  g1.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0,0)"); 						//  .attr("transform", "translate(0," + height + ")")
+    // .call(d3.axisLeft(y));									//   .call(d3.axisBottom(x));
+
+  g1.append("g")
+      .attr("class", "axis")
+	  .attr("transform", "translate(0,"+(height/1.5 + 12)+")")				// New line
+      .call(d3.axisBottom(x).ticks(null, "s"))					//  .call(d3.axisLeft(y).ticks(null, "s"))
+    .append("text")
+      .attr("y", 2)												//     .attr("y", 2)
+      .attr("x", x(x.ticks().pop()) + 0.5) 						//     .attr("y", y(y.ticks().pop()) + 0.5)
+      .attr("dy", "0.32em")										//     .attr("dy", "0.32em")
+      .attr("fill", "#000")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "start")
+      .text("Number of Days (Sep-Oct, 2018)")
+	  .attr("transform", "translate("+ (-width) +",-10)");   	// Newline
+
+  var legend = g1.append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 10)
+      .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(keys.slice().reverse())
+    .enter().append("g")
+    //.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+	 .attr("transform", function(d, i) { return "translate(-50," + (300 + i * 20) + ")"; });
+
+/* legend.append("rect")
+      .attr("x", width - 19)
+      .attr("width", 19)
+      .attr("height", 19)
+      .attr("fill", z);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9.5)
+      .attr("dy", "0.32em")
+      .text(function(d) { return d; });*/
+});
+d3.csv("data/mizoram_Jul-Aug-2018_lab_func.csv", function(d, i, columns) {
+  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+  d.total = t;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  var keys = data.columns.slice(1);
+
+  //data.sort(function(a, b) { return b.total - a.total; });
+  y.domain(data.map(function(d) { return d.school_server_code; }));					// x.domain...
+  x.domain([0, 15]).nice();	// y.domain...
+  z.domain(keys);
+
+  console.log(d3.max(data, function(d){return d.total;}))
+
+  //x.domain([0, d3.max(data, function(d){return d.total;}) + 7]).nice();	// y.domain...
+  g2.append("g")
+    .selectAll("g")
+    .data(d3.stack().keys(keys)(data))
+    .enter().append("g")
+      .attr("fill", function(d) { return z(d.key); })
+    .selectAll("rect")
+    .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("y", function(d) { return y(d.data.school_server_code); })	    //.attr("x", function(d) { return x(d.data.State); })
+      .attr("x", function(d) { return x(d[0]); })			    //.attr("y", function(d) { return y(d[1]); })
+      .attr("width", function(d) { return x(d[1]) - x(d[0]); })	//.attr("height", function(d) { return y(d[0]) - y(d[1]); })
+      .attr("height", y.bandwidth()/1);						    //.attr("width", x.bandwidth());
+
+  g2.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0,0)") 						//  .attr("transform", "translate(0," + height + ")")
+     .call(d3.axisLeft(y));									//   .call(d3.axisBottom(x));
+
+  g2.append("g")
+      .attr("class", "axis")
+	  .attr("transform", "translate(0,"+(height/1.5 + 12)+")")				// New line
+      .call(d3.axisBottom(x).ticks(null, "s"))					//  .call(d3.axisLeft(y).ticks(null, "s"))
+    .append("text")
+      .attr("y", 2)												//     .attr("y", 2)
+      .attr("x", x(x.ticks().pop()) + 0.5) 						//     .attr("y", y(y.ticks().pop()) + 0.5)
+      .attr("dy", "0.32em")										//     .attr("dy", "0.32em")
+      .attr("fill", "#000")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "start")
+      .text("Number of Days (Jul-Aug, 2018)")
+	  .attr("transform", "translate("+ (-width) +",-10)");   	// Newline
+
+  var legend = g2.append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 10)
+      .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(keys.slice().reverse())
+    .enter().append("g")
+    //.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+	 .attr("transform", function(d, i) { return "translate(-50," + (300 + i * 20) + ")"; });
+
+ /*legend.append("rect")
+      .attr("x", width - 19)
+      .attr("width", 19)
+      .attr("height", 19)
+      .attr("fill", z);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9.5)
+      .attr("dy", "0.32em")
+      .text(function(d) { return d; });*/
+});
+
+</script>
