@@ -4,7 +4,7 @@ cffi==1.12.3
 chardet==3.0.4
 cliapp==1.20170827
 cmdtest==0.32
-cryptography==2.6.1
+cryptography==3.2
 decorator==4.1.2
 diskcache==3.0.6
 docutils==0.14
