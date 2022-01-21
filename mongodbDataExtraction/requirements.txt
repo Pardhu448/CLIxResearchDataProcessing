@@ -10,7 +10,7 @@ diskcache==3.0.6
 docutils==0.14
 enum34==1.1.6
 html5lib==0.999999999
-ipython==5.5.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 keyrings.alt==3.0
 lxml==4.2.1
